@@ -1,0 +1,56 @@
+{
+ "app": "app.html",
+ "cipher": "AES-256-GCM",
+ "files": {
+  "app.html": {
+   "bytes": 461749,
+   "file": "app.html.enc",
+   "stamp": "2026-10-09T13:33:12Z"
+  },
+  "data.json": {
+   "bytes": 14924865,
+   "file": "data.json.enc",
+   "stamp": "2026-10-09T13:33:12Z"
+  },
+  "data_financing.json": {
+   "bytes": 15610928,
+   "file": "data_financing.json.enc",
+   "stamp": "2026-10-09T13:33:12Z"
+  },
+  "data_live.json": {
+   "bytes": 149878,
+   "file": "data_live.json.enc",
+   "stamp": "2026-10-11T03:25:17Z"
+  },
+  "data_prices.json": {
+   "bytes": 632160,
+   "file": "data_prices.json.enc",
+   "stamp": "2026-10-09T13:33:12Z"
+  },
+  "data_queue.json": {
+   "bytes": 2751591,
+   "file": "data_queue.json.enc",
+   "stamp": "2026-10-09T13:33:12Z"
+  },
+  "data_um.json": {
+   "bytes": 10771527,
+   "file": "data_um.json.enc",
+   "stamp": "2026-10-09T13:33:12Z"
+  },
+  "data_unlisted.json": {
+   "bytes": 27337,
+   "file": "data_unlisted.json.enc",
+   "stamp": "2026-10-09T13:33:12Z"
+  }
+ },
+ "format": 1,
+ "kdf": {
+  "hash": "SHA-256",
+  "iterations": 600000,
+  "name": "PBKDF2",
+  "salt": "xX8hnVbETboZefPaLex4tg=="
+ },
+ "layout": "nonce (12 bytes), ciphertext, tag (16 bytes); additional data: the plain file name",
+ "live": "2026-10-11T03:25:17Z",
+ "version": "2026-10-09T13:33:12Z"
+}

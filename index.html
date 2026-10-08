@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<title>GB Power Markets</title>
+<style>
+  :root { --bg:#f4f5f7; --panel:#fff; --ink:#1b222c; --muted:#5d6878; --line:#d9dee6; --accent:#1f3358; --accent2:#2c4a80; --bad:#a3271c; color-scheme:light; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#12161d; --panel:#1b212b; --ink:#e8ecf2; --muted:#a3adbb; --line:#2c3440; --accent:#1c2b4a; --accent2:#8fb4f5; --bad:#ff9d92; color-scheme:dark; } }
+  * { box-sizing:border-box; } html, body { height:100%; }
+  body { margin:0; font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); display:flex; flex-direction:column; }
+  header { background:var(--accent); color:#fff; padding:22px 24px; }
+  header h1 { margin:0; font:800 30px/1.05 "Avenir Next","Segoe UI",system-ui,sans-serif; letter-spacing:-.03em; }
+  main { flex:1; display:flex; align-items:flex-start; justify-content:center; padding:48px 16px; }
+  form { width:100%; max-width:420px; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:24px; }
+  h2 { margin:0 0 6px; font-size:19px; letter-spacing:-.01em; } p { margin:0 0 16px; color:var(--muted); font-size:13.5px; }
+  label { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); margin-bottom:6px; }
+  input { width:100%; font:inherit; padding:10px 12px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--ink); }
+  input:focus-visible, button:focus-visible { outline:2px solid var(--accent2); outline-offset:2px; }
+  button { margin-top:14px; width:100%; font:600 15px/1 inherit; padding:12px; border:0; border-radius:6px; background:var(--accent2); color:var(--panel); cursor:pointer; }
+  button[disabled] { opacity:.6; cursor:progress; }
+  #say { min-height:1.5em; margin:12px 0 0; font-size:13.5px; color:var(--muted); } #say.bad { color:var(--bad); }
+</style></head><body>
+<header><h1>GB Power Markets</h1></header>
+<main><form id="unlock" autocomplete="off" hidden>
+  <h2>Enter the passphrase</h2>
+  <p>This page is shared by link and passphrase. Its contents are stored encrypted and are unlocked here, in your browser; the passphrase is not sent anywhere.</p>
+  <label for="pass">Passphrase</label>
+  <input id="pass" type="password" autocomplete="current-password" autocapitalize="off" spellcheck="false" required>
+  <button id="go" type="submit">Unlock</button>
+  <p id="say" role="status" aria-live="polite"></p>
+</form><p id="wait">Loading…</p></main>
+<script>
+(async function () {
+  const NONCE = 12, form = document.getElementById('unlock'), say = document.getElementById('say'), wait = document.getElementById('wait');
+  const tell = (t, bad) => { say.textContent = t; say.className = bad ? 'bad' : ''; };
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  const text64 = bytes => { let s = ''; for (const b of bytes) s += String.fromCharCode(b); return btoa(s); };
+  const keep = raw => { try { sessionStorage.setItem('gbpm.key', text64(new Uint8Array(raw))); } catch (e) {} };
+  const kept = () => { try { return sessionStorage.getItem('gbpm.key'); } catch (e) { return null; } };
+  const forget = () => { try { sessionStorage.removeItem('gbpm.key'); } catch (e) {} };
+  const ask = () => { wait.hidden = true; form.hidden = false; document.getElementById('pass').focus(); };
+  if (!(window.crypto && crypto.subtle)) { wait.textContent = 'This browser cannot unlock the page (no WebCrypto). Open it over https in a current browser.'; return; }
+  let site, sealed;
+  try {
+    site = await (await fetch('site.json', {cache: 'no-store'})).json();
+    const r = await fetch(site.app + '.enc?v=' + encodeURIComponent(site.version || ''));
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    sealed = new Uint8Array(await r.arrayBuffer());
+  } catch (e) { wait.textContent = 'The page did not load. Reload to try again.'; return; }
+  // the page decrypts only with the right key: the tag fails otherwise, and that is the whole check
+  async function open(raw) {
+    const key = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
+    const html = await crypto.subtle.decrypt({name: 'AES-GCM', iv: sealed.slice(0, NONCE), additionalData: new TextEncoder().encode(site.app)}, key, sealed.slice(NONCE));
+    window.__siteKey = key;
+    const page = new TextDecoder().decode(html);
+    document.open(); document.write(page); document.close();
+  }
+  const saved = kept();
+  if (saved) { try { await open(b64(saved)); return; } catch (e) { forget(); } }
+  ask();
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const go = document.getElementById('go'), field = document.getElementById('pass');
+    go.disabled = true; tell('Unlocking…');
+    try {
+      const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(field.value), 'PBKDF2', false, ['deriveBits']);
+      const raw = await crypto.subtle.deriveBits({name: 'PBKDF2', hash: 'SHA-256', salt: b64(site.kdf.salt), iterations: site.kdf.iterations}, base, 256);
+      field.value = '';
+      try { await open(raw); } catch (err) { tell('That passphrase does not unlock this page.', true); go.disabled = false; field.focus(); return; }
+      keep(raw);
+    } catch (err) { tell('This browser could not derive the key.', true); go.disabled = false; }
+  });
+})();
+</script></body></html>

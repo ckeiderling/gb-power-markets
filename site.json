@@ -1,0 +1,196 @@
+{
+ "app": "app.html",
+ "cipher": "AES-256-GCM",
+ "files": {
+  "app.html": {
+   "bytes": 722675,
+   "file": "app.html.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data.json": {
+   "bytes": 10831898,
+   "file": "data.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_btm.json": {
+   "bytes": 2095543,
+   "file": "data_btm.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_detail.json": {
+   "bytes": 1501061,
+   "file": "data_detail.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing.json": {
+   "bytes": 5510793,
+   "file": "data_financing.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_assets_00.json": {
+   "bytes": 2717403,
+   "file": "data_financing_assets_00.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_assets_01.json": {
+   "bytes": 2365081,
+   "file": "data_financing_assets_01.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_assets_02.json": {
+   "bytes": 2459173,
+   "file": "data_financing_assets_02.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_assets_03.json": {
+   "bytes": 2886461,
+   "file": "data_financing_assets_03.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_assets_04.json": {
+   "bytes": 2901125,
+   "file": "data_financing_assets_04.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_assets_05.json": {
+   "bytes": 2748120,
+   "file": "data_financing_assets_05.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_assets_06.json": {
+   "bytes": 2353289,
+   "file": "data_financing_assets_06.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_assets_07.json": {
+   "bytes": 3432355,
+   "file": "data_financing_assets_07.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_facilities_00.json": {
+   "bytes": 1958611,
+   "file": "data_financing_facilities_00.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_facilities_01.json": {
+   "bytes": 2215170,
+   "file": "data_financing_facilities_01.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_facilities_02.json": {
+   "bytes": 1753523,
+   "file": "data_financing_facilities_02.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_facilities_03.json": {
+   "bytes": 1970943,
+   "file": "data_financing_facilities_03.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_facilities_04.json": {
+   "bytes": 2550750,
+   "file": "data_financing_facilities_04.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_facilities_05.json": {
+   "bytes": 2299182,
+   "file": "data_financing_facilities_05.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_facilities_06.json": {
+   "bytes": 2530505,
+   "file": "data_financing_facilities_06.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_facilities_07.json": {
+   "bytes": 3588672,
+   "file": "data_financing_facilities_07.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_financing_summary.json": {
+   "bytes": 3160559,
+   "file": "data_financing_summary.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_live.json": {
+   "bytes": 150319,
+   "file": "data_live.json.enc",
+   "stamp": "2026-10-26T05:42:58Z"
+  },
+  "data_monthly.json": {
+   "bytes": 126935,
+   "file": "data_monthly.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_prices.json": {
+   "bytes": 626695,
+   "file": "data_prices.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_queue.json": {
+   "bytes": 3118694,
+   "file": "data_queue.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_queue_records_00.json": {
+   "bytes": 922537,
+   "file": "data_queue_records_00.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_queue_records_01.json": {
+   "bytes": 918048,
+   "file": "data_queue_records_01.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_queue_records_02.json": {
+   "bytes": 919121,
+   "file": "data_queue_records_02.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_queue_records_03.json": {
+   "bytes": 906381,
+   "file": "data_queue_records_03.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_repd_layer.json": {
+   "bytes": 493188,
+   "file": "data_repd_layer.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_strings.json": {
+   "bytes": 3976289,
+   "file": "data_strings.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_um.json": {
+   "bytes": 10802916,
+   "file": "data_um.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_unlisted.json": {
+   "bytes": 27426,
+   "file": "data_unlisted.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "data_wind.json": {
+   "bytes": 545444,
+   "file": "data_wind.json.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  },
+  "deep_dive.pdf": {
+   "bytes": 356883,
+   "file": "deep_dive.pdf.enc",
+   "stamp": "2026-10-25T10:26:27Z"
+  }
+ },
+ "format": 1,
+ "kdf": {
+  "hash": "SHA-256",
+  "iterations": 600000,
+  "name": "PBKDF2",
+  "salt": "xX8hnVbETboZefPaLex4tg=="
+ },
+ "layout": "nonce (12 bytes), ciphertext, tag (16 bytes); additional data: the plain file name",
+ "live": "2026-10-26T05:42:58Z",
+ "version": "2026-10-25T10:26:27Z"
+}
